@@ -26,9 +26,13 @@
   {{- partial "toc.html" . }}
   {{- end }}
   <div class="post-content">
+    {{- $content := ""}} 
     {{- if not (.Param "disableAnchoredHeadings") }}
-    {{- partial "anchored_headings.html" .Content -}}
-    {{- else }}{{ .Content }}{{ end }}
+    {{- $content = partial "anchored_headings.html" .Content -}} 
+    {{- else }}
+    {{ $content = .Content }}
+    {{ end }} 
+    {{- partial "content.html" $content }}
   </div>
   <footer class="post-footer">
     {{- if .Params.tags }}
