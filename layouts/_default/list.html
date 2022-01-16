@@ -10,10 +10,18 @@
   <h1>{{ .Title }}</h1>
   {{- if .Description }}
   <div class="post-description">
-    {{ .Description }}
+    {{ .Description | markdownify }}
   </div>
   {{- end }}
 </header>
+{{- end }}
+
+{{- if .Content }}
+<div class="post-content">
+  {{- if not (.Param "disableAnchoredHeadings") }}
+  {{- partial "anchored_headings.html" .Content -}}
+  {{- else }}{{ .Content }}{{ end }}
+</div>
 {{- end }}
 
 {{- $pages := union .RegularPages .Sections }}
@@ -48,7 +56,7 @@
     <h2>
       <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}">
         {{- .Title }}
-        {{- if .Draft }}<div class="entry-isdraft"><sup>&nbsp;&nbsp;[draft]</sup></div>{{ end -}}
+        {{- if .Draft }}<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>{{- end }}
       </a>
     </h2>
   </header>
