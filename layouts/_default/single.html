@@ -27,6 +27,10 @@
   {{- partial "toc.html" . }}
   {{- end }}
 
+  {{- if .Params.series -}}
+  {{- partial "series_nav.html" . }}
+  {{- end }}
+
   {{- if .Content }}
   <div class="post-content">
     {{- $content := ""}} 
@@ -37,6 +41,10 @@
     {{ end }} 
     {{- partial "content.html" $content }}
   </div>
+  {{- end }}
+
+  {{- if .Params.series -}}
+  {{- partial "series_nav.html" . }}
   {{- end }}
 
   <footer class="post-footer">

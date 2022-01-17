@@ -70,7 +70,8 @@
 }
 
 .post-content a,
-.toc a:hover {
+.toc a:hover,
+.series a:hover {
     box-shadow: 0 1px 0;
 }
 
@@ -257,7 +258,7 @@
     font-weight: normal;
 }
 
-.toc {
+.toc, .series {
     margin: 0 2px 40px 2px;
     border: 1px solid var(--border);
     background: var(--code-bg);
@@ -265,7 +266,7 @@
     padding: 0.4em;
 }
 
-.dark .toc {
+.dark .toc, .dark .series {
     background: var(--entry);
 }
 
@@ -278,13 +279,16 @@
     cursor: zoom-out;
 }
 
-.toc .details {
+.toc .details, .series header a {
     display: inline;
     font-weight: 500;
 }
 
-.toc .inner {
+.toc .inner, .series ol, .series header {
     margin: 0 20px;
+}
+
+.toc .inner, .series ol {
     padding: 10px 20px;
 }
 

@@ -1,0 +1,21 @@
+<nav class="series">
+{{- $series := where .Site.RegularPages.ByDate "Params.series" "intersect" .Params.series -}}
+{{- with index (.GetTerms "series") 0 -}}
+<header>
+    <a href="{{.Permalink}}">Seri {{.LinkTitle}} ({{len $series}} Bagian)</a>
+</header>
+{{- end -}}
+{{- with $series -}}
+<ol>
+    {{- range . -}}
+    <li>
+        {{- if eq .File.UniqueID $.File.UniqueID -}}
+            <b>{{ .Title }}</b>
+        {{- else -}}
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+        {{- end -}}
+    </li>
+    {{- end -}}
+</ol>
+{{- end -}}
+</nav>
