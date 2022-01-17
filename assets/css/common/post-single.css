@@ -304,13 +304,17 @@
     margin-top: 56px;
 }
 
-.post-tags li {
+.post-taxonomy {
+    margin-top: 5px;
+}
+
+.post-taxonomy li {
     display: inline-block;
     margin-inline-end: 3px;
     margin-bottom: 5px;
 }
 
-.post-tags a,
+.post-taxonomy a,
 .share-buttons,
 .paginav {
     border-radius: var(--radius);
@@ -318,7 +322,7 @@
     border: 1px solid var(--border);
 }
 
-.post-tags a {
+.post-taxonomy a {
     display: block;
     padding-inline-start: 14px;
     padding-inline-end: 14px;
@@ -328,7 +332,7 @@
     background: var(--code-bg);
 }
 
-.post-tags a:hover,
+.post-taxonomy a:hover,
 .paginav a:hover {
     background: var(--border);
 }

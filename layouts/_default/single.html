@@ -48,8 +48,17 @@
   {{- end }}
 
   <footer class="post-footer">
+    {{- if .Params.topics }}
+    <span>Topik</span>
+    <ul class="post-taxonomy">
+      {{- range ($.GetTerms "topics") }}
+      <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+      {{- end }}
+    </ul>
+    {{- end }}
     {{- if .Params.tags }}
-    <ul class="post-tags">
+    <span>Tag</span>
+    <ul class="post-taxonomy">
       {{- range ($.GetTerms "tags") }}
       <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
       {{- end }}
