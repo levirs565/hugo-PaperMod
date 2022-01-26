@@ -31,6 +31,10 @@
 {{- $pages = $pages.ByPublishDate.Reverse }}
 {{- end }}
 
+{{- if eq .Data.Singular "serie" }}
+{{ $pages = .Data.Pages.ByParam "series_weight" }}
+{{- end}}
+
 {{- $paginator := .Paginate $pages }}
 
 {{- if and .IsHome .Site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
