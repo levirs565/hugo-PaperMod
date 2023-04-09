@@ -75,8 +75,9 @@
   "inLanguage": {{ .Language.Lang | default "en-us" }},
   {{ if .Params.cover.image -}}
   "image":
-    {{- if (ne .Params.cover.relative true) -}}
-    {{ .Params.cover.image | absURL }},
+    {{- $cover := (.Resources.ByType "image").GetMatch (printf "*%s*" (.Params.cover.image)) }}
+    {{- if $cover }}
+    {{ $cover.Permalink }},
     {{- else -}}
     {{ (path.Join .RelPermalink .Params.cover.image ) | absURL }},
     {{- end}}

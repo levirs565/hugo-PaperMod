@@ -3,8 +3,9 @@
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
 <meta property="og:url" content="{{ .Permalink }}" />
 {{- if .Params.cover.image -}}
-{{- if (ne .Params.cover.relative true) }}
-<meta property="og:image" content="{{ .Params.cover.image | absURL }}" />
+{{- $cover := (.Resources.ByType "image").GetMatch (printf "*%s*" (.Params.cover.image)) }}
+{{- if $cover }}
+<meta property="og:image" content="{{ $cover.Permalink }}" />
 {{- else}}
 <meta property="og:image" content="{{ (path.Join .RelPermalink .Params.cover.image ) | absURL }}" />
 {{- end}}
